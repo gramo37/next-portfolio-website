@@ -7,7 +7,7 @@ export default function useSubmitData() {
   const router = useRouter();
   return useMutation({
     mutationFn: async (data: TUser) => {
-      return await axios.post("http://localhost:3000/api", data);
+      return await axios.post("/api", data);
     },
     onSuccess: (data) => {
       router.push('/')

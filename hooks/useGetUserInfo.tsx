@@ -6,7 +6,7 @@ export default function useGetUserInfo() {
   const query = useQuery({
     queryKey: ["userinfo"],
     queryFn: async (): Promise<TUser | any> => {
-        return await axios.get("http://localhost:3000/api")
+        return await axios.get("/api")
     }
   });
 
