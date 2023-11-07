@@ -14,5 +14,81 @@ model User {
   id    Int     @id @default(autoincrement())
   email String  @unique
   name  String
-  description String
+  description String[]
+  profession String
+  twitter_link String
+  linkedin_link String
+  github_link String
+  phone String
+  workExperience WorkExperience[]
+  education Education[]
+  skills Skill[]
+  project Project[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model WorkExperience {
+  id    Int     @id @default(autoincrement())
+  company_name String
+  profession String
+  duration String
+  description String[]
+
+  user User @relation(fields: [userId], references: [id])
+  userId Int
+
+  @@index([userId])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Education {
+  id    Int     @id @default(autoincrement())
+  degree_name String
+  university_name String
+  duration String
+  description String[]
+
+  user User @relation(fields: [userId], references: [id])
+  userId Int
+
+  @@index([userId])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Skill {
+  id    Int     @id @default(autoincrement())
+  skill_name String
+  proficiency Int
+  maximum_proficiency Int @default(100)
+
+  user User @relation(fields: [userId], references: [id])
+  userId Int
+
+  @@index([userId])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Project {
+  id    Int     @id @default(autoincrement())
+  project_name String
+  description String[]
+  techStack String[]
+  background_img_url String
+  project_link String
+
+  user User @relation(fields: [userId], references: [id])
+  userId Int
+
+  @@index([userId])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
