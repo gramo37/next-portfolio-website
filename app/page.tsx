@@ -7,7 +7,6 @@ export const revalidate = 0
 
 export default async function Home() {
   const userInfo = await getUserInfo();
-  console.log(userInfo, "Hello");
   if (!userInfo) return <h1>User not found</h1>;
   const {
     email,
