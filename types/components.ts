@@ -6,3 +6,8 @@ export interface TSingleFormData {
   label: string;
   name: string;
 }
+
+export interface TArrayInputFormData {
+  name: string;
+  emptyData: any;
+}

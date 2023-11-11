@@ -95,20 +95,68 @@ export async function updateSkillInfo(skill: TSkill) {
   return updatedSkill;
 }
 
-export async function updateEducationInfo(education: TEducation) {
-  const updatedEducation = await prisma.education.update({
-    where: { id: 1 },
-    data: education,
+function findUncommonFields(arr1: any[], arr2: any[]) {
+  const idSet = new Set();
+
+  // Add all ids from arr1 to the set
+  arr1.forEach((item) => idSet.add(item.id));
+
+  // Filter arr2 to get only the items with uncommon ids
+  const uncommonFields = arr2.filter((item) => !idSet.has(item.id));
+
+  return uncommonFields;
+}
+
+export async function updateEducationInfo(education: TEducation[]) {
+  // Delete unnecessary fields
+  let allFields = await prisma.education.findMany({
+    where: { userId: 1 },
+    select: { id: true },
   });
+  let requiredIDs = new Set(
+    education.map((item) => item.id).filter((item) => Boolean(item))
+  );
+  let currIDs = allFields.map((item) => item.id);
+  let toBeDeletedIDs = currIDs.filter((item) => !requiredIDs.has(item));
+  for (let i = 0; i < toBeDeletedIDs.length; i++) {
+    await prisma.education.delete({
+      where: {
+        id: toBeDeletedIDs[i],
+      },
+    });
+  }
+
+  let updatedEducation: TEducation[] = [];
+  const ps: Promise<TEducation>[] = [];
+  education.forEach((item) => {
+    let newData: Promise<TEducation>;
+    // Update if id is given
+    if (item?.id) {
+      newData = prisma.education.update({
+        where: { id: item?.id },
+        data: item,
+      });
+    // Create a new entry if id is not given
+    } else {
+      newData = prisma.education.create({
+        data: { ...item, userId: 1 },
+      });
+    }
+    ps.push(newData);
+  });
+  updatedEducation = await Promise.all(ps);
   if (!updatedEducation) throw new Error("Education not updated! Try again..");
   return updatedEducation;
 }
 
-export async function updateWorkExperienceInfo(workExperience: TWorkExperience) {
+export async function updateWorkExperienceInfo(
+  workExperience: TWorkExperience
+) {
   const updatedWorkExperience = await prisma.workExperience.update({
     where: { id: 1 },
     data: workExperience,
   });
-  if (!updatedWorkExperience) throw new Error("WorkExperience not updated! Try again..");
+  if (!updatedWorkExperience)
+    throw new Error("WorkExperience not updated! Try again..");
   return updatedWorkExperience;
 }
