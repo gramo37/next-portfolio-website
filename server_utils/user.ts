@@ -95,18 +95,6 @@ export async function updateSkillInfo(skill: TSkill) {
   return updatedSkill;
 }
 
-function findUncommonFields(arr1: any[], arr2: any[]) {
-  const idSet = new Set();
-
-  // Add all ids from arr1 to the set
-  arr1.forEach((item) => idSet.add(item.id));
-
-  // Filter arr2 to get only the items with uncommon ids
-  const uncommonFields = arr2.filter((item) => !idSet.has(item.id));
-
-  return uncommonFields;
-}
-
 export async function updateEducationInfo(education: TEducation[]) {
   // Delete unnecessary fields
   let allFields = await prisma.education.findMany({

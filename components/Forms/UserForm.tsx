@@ -28,6 +28,7 @@ export default function UserForm(props: any) {
 
   return (
     <FormProvider {...methods}>
+      <h1 className="text-2xl font-bold text-center">User Info</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <SingleInput name="name" label="Name" />
         <SingleInput name="email" label="Email" />

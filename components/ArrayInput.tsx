@@ -10,10 +10,7 @@ const ArrayInput: React.FC<TArrayInputFormData> = (
   const { setValue, getValues, watch } = useFormContext();
 
   const addInput = () => {
-    setValue(name, [
-      ...getValues(name),
-      emptyData,
-    ]);
+    setValue(name, [...getValues(name), emptyData]);
   };
 
   const removeInput = (index: number) => {
@@ -23,13 +20,14 @@ const ArrayInput: React.FC<TArrayInputFormData> = (
   };
 
   return (
-    <>
+    <div className="flex flex-col justify-center items-center relative pt-5">
+      <h1 className="text-2xl font-bold">{name}</h1>
       {watch(name)?.map((item: any, index: number) => {
         return (
           <div key={index}>
             {Object.keys(item).map((key) => {
               if (key === "id") return;
-              if (typeof item?.[key] === typeof "a")
+              if ([typeof "a", typeof 1].includes(typeof item?.[key]))
                 return (
                   <SingleInput
                     key={key}
@@ -45,7 +43,7 @@ const ArrayInput: React.FC<TArrayInputFormData> = (
             <button
               type="button"
               onClick={() => removeInput(index)}
-              className="ml-2 p-2 bg-red-500 text-white rounded"
+              className="ml-2 p-2 bg-red-500 text-white rounded absolute top-3 right-5"
             >
               Delete
             </button>
@@ -59,7 +57,7 @@ const ArrayInput: React.FC<TArrayInputFormData> = (
       >
         Add Array Input
       </button>
-    </>
+    </div>
   );
 };
 
