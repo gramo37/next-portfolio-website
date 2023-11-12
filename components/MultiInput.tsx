@@ -1,20 +1,12 @@
 import React from "react";
 import { useFormContext } from "react-hook-form";
 import { TMultiLineFormData } from "@/types/components";
-import { CaretSortIcon } from "@radix-ui/react-icons"
-import { Button } from "@/components/ui/button"
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible"
 
 const InputArrayForm: React.FC<TMultiLineFormData> = (
   props: TMultiLineFormData
 ) => {
   const { name } = props;
   const { setValue, getValues, watch } = useFormContext();
-  const [isOpen, setIsOpen] = React.useState(false)
 
   const addInput = () => {
     setValue(name, [...getValues(name), ""]);
