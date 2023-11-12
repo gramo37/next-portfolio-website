@@ -33,7 +33,7 @@ export default function SkillForm(props: any) {
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <ArrayInput name="skills" emptyData={emptyData} />
-        <SubmitButton />
+        <SubmitButton label="Submit Skill Details"/>
       </form>
     </FormProvider>
   );

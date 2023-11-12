@@ -1,6 +1,6 @@
 import SubmitButton from "@/components/SubmitButton";
 import useSubmitData from "@/hooks/useSubmitData";
-import { TEducation, TUser } from "@/types/user";
+import { TEducation } from "@/types/user";
 import React from "react";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 import ArrayInput from "../ArrayInput";
@@ -33,7 +33,7 @@ export default function EducationForm(props: any) {
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <ArrayInput name="education" emptyData={emptyData} />
-        <SubmitButton />
+        <SubmitButton label="Submit Education Details"/>
       </form>
     </FormProvider>
   );

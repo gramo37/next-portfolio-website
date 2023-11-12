@@ -35,7 +35,7 @@ export default function ProjectForm(props: any) {
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <ArrayInput name="project" emptyData={emptyData} />
-        <SubmitButton />
+        <SubmitButton label="Submit Project Deatails"/>
       </form>
     </FormProvider>
   );

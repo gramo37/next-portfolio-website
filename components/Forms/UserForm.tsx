@@ -37,7 +37,7 @@ export default function UserForm(props: any) {
         <SingleInput name="twitter_link" label="Twitter Link" />
         <SingleInput name="linkedin_link" label="LinkedIn Link" />
         <SingleInput name="github_link" label="GitHub Link" />
-        <SubmitButton />
+        <SubmitButton label="Submit User Details"/>
       </form>
     </FormProvider>
   );

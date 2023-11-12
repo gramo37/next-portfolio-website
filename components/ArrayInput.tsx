@@ -2,6 +2,8 @@ import { TArrayInputFormData } from "@/types/components";
 import { useFormContext } from "react-hook-form";
 import SingleInput from "./SingleInput";
 import MultiInput from "./MultiInput";
+import { Button } from "./ui/button";
+import { AiFillDelete } from "react-icons/ai";
 
 const ArrayInput: React.FC<TArrayInputFormData> = (
   props: TArrayInputFormData
@@ -20,11 +22,11 @@ const ArrayInput: React.FC<TArrayInputFormData> = (
   };
 
   return (
-    <div className="flex flex-col justify-center items-center relative pt-5">
+    <div className="flex flex-col justify-center items-center pt-5">
       <h1 className="text-2xl font-bold">{name}</h1>
       {watch(name)?.map((item: any, index: number) => {
         return (
-          <div key={index}>
+          <div key={index} className="relative border p-2 pt-4 m-2">
             {Object.keys(item).map((key) => {
               if (key === "id") return;
               if ([typeof "a", typeof 1].includes(typeof item?.[key]))
@@ -40,23 +42,21 @@ const ArrayInput: React.FC<TArrayInputFormData> = (
                   <MultiInput key={key} name={`${name}.${index}.${key}`} />
                 );
             })}
-            <button
-              type="button"
-              onClick={() => removeInput(index)}
-              className="ml-2 p-2 bg-red-500 text-white rounded absolute top-3 right-5"
-            >
-              Delete
-            </button>
+            <div className="absolute top-0 right-0">
+              <AiFillDelete
+                className="text-3xl cursor-pointer hover:bg-gray-200 rounded-full p-1 text-red-600"
+                onClick={() => removeInput(index)}
+              />
+            </div>
           </div>
         );
       })}
-      <button
+      <Button
         type="button"
         onClick={addInput}
-        className="mt-2 p-2 bg-blue-500 text-white rounded"
       >
         Add Array Input
-      </button>
+      </Button>
     </div>
   );
 };

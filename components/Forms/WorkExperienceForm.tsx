@@ -34,7 +34,7 @@ export default function WorkExperienceForm(props: any) {
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <ArrayInput name="workExperience" emptyData={emptyData} />
-        <SubmitButton />
+        <SubmitButton label="Submit Work Experience Details"/>
       </form>
     </FormProvider>
   );
