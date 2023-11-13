@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 import { TMultiLineFormData } from "@/types/components";
 import { CaretSortIcon } from "@radix-ui/react-icons";
@@ -10,13 +10,19 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { AiFillDelete } from "react-icons/ai";
+import { localName, localNameForArrays } from "./utils/getLocalName";
 
 const InputArrayForm: React.FC<TMultiLineFormData> = (
   props: TMultiLineFormData
 ) => {
-  const { name } = props;
+  const { name, data } = props;
   const { setValue, getValues, watch } = useFormContext();
   const [isOpen, setIsOpen] = React.useState(false);
+
+  useEffect(() => {
+    setValue(name, data)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const addInput = () => {
     setValue(name, [...getValues(name), ""]);
@@ -36,14 +42,14 @@ const InputArrayForm: React.FC<TMultiLineFormData> = (
   };
 
   return (
-    <div className="flex gap-2 justify-center items-start border border-x-0 border-t-0 border-b-200 p-2">
+    <div className="flex gap-2 justify-center items-start p-2">
       <Collapsible
         open={isOpen}
         onOpenChange={setIsOpen}
         className="flex flex-col space-y-2 md:w-[70vw] w-full mx-3"
       >
         <div className="flex items-center justify-between space-x-4 px-4 py-1 border">
-          <h4 className="text-sm font-semibold">{name}</h4>
+          <h4 className="text-sm font-semibold">{localNameForArrays(name)}</h4>
           <CollapsibleTrigger asChild>
             <Button variant="ghost" size="sm">
               <CaretSortIcon className="h-4 w-4" />
@@ -60,8 +66,8 @@ const InputArrayForm: React.FC<TMultiLineFormData> = (
               <Textarea
                 value={desc}
                 onChange={(e) => handleOnChange(e, index)}
-                className="w-[94%] border border-y-0 border-l-0 border-r-1 rounded-none"
-                placeholder={`Enter ${name}`}
+                className="w-[94%] border-none rounded-none"
+                placeholder={`Enter ${localNameForArrays(name)}`}
               />
               <div className="absolute top-0 right-0">
                 <AiFillDelete

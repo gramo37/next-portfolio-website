@@ -4,12 +4,21 @@ import SingleInput from "./SingleInput";
 import MultiInput from "./MultiInput";
 import { Button } from "./ui/button";
 import { AiFillDelete } from "react-icons/ai";
+import { useEffect } from "react";
+import { emptyData as ed } from "./utils/getEmptyData";
+import { localName } from "./utils/getLocalName";
 
 const ArrayInput: React.FC<TArrayInputFormData> = (
   props: TArrayInputFormData
 ) => {
-  const { name, emptyData } = props;
+  const { name, data } = props;
+  const emptyData = ed[name];
   const { setValue, getValues, watch } = useFormContext();
+
+  useEffect(() => {
+    setValue(name, data);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const addInput = () => {
     setValue(name, [...getValues(name), emptyData]);
@@ -23,7 +32,7 @@ const ArrayInput: React.FC<TArrayInputFormData> = (
 
   return (
     <div className="flex flex-col justify-center items-center pt-5">
-      <h1 className="text-2xl font-bold">{name}</h1>
+      <h1 className="text-2xl font-bold">{localName[name]}</h1>
       {watch(name)?.map((item: any, index: number) => {
         return (
           <div key={index} className="relative border p-2 pt-4 m-2">
@@ -35,11 +44,12 @@ const ArrayInput: React.FC<TArrayInputFormData> = (
                     key={key}
                     name={`${name}.${index}.${key}`}
                     label={key}
+                    data={item?.[key]}
                   />
                 );
               if (typeof item?.[key] === typeof ["a"])
                 return (
-                  <MultiInput key={key} name={`${name}.${index}.${key}`} />
+                  <MultiInput key={key} name={`${name}.${index}.${key}`} data={item?.[key]}/>
                 );
             })}
             <div className="absolute top-0 right-0">

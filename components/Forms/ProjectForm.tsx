@@ -11,19 +11,9 @@ type TProjectForm = {
 
 export default function ProjectForm(props: any) {
   const { user } = props;
-  const methods = useForm<TProjectForm>({
-    defaultValues: {
-      project: user?.project || [],
-    },
-  });
+  const methods = useForm<TProjectForm>();
   const { handleSubmit } = methods;
-  const emptyData = {
-    project_name: "",
-    description: [""],
-    techStack: [""],
-    background_img_url: "",
-    project_link: "",
-  };
+
   const { mutate } = useSubmitData("project");
 
   const onSubmit: SubmitHandler<TProjectForm> = (data) => {
@@ -34,7 +24,7 @@ export default function ProjectForm(props: any) {
   return (
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <ArrayInput name="project" emptyData={emptyData} />
+        <ArrayInput name="project" data={user?.project}/>
         <SubmitButton label="Submit Project Deatails"/>
       </form>
     </FormProvider>

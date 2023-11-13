@@ -30,14 +30,30 @@ export default function UserForm(props: any) {
     <FormProvider {...methods}>
       <h1 className="text-2xl font-bold text-center">User Info</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <SingleInput name="name" label="Name" />
-        <SingleInput name="email" label="Email" />
-        <MultiInput name="description" />
-        <SingleInput name="profession" label="Profession" />
-        <SingleInput name="twitter_link" label="Twitter Link" />
-        <SingleInput name="linkedin_link" label="LinkedIn Link" />
-        <SingleInput name="github_link" label="GitHub Link" />
-        <SubmitButton label="Submit User Details"/>
+        <SingleInput name="name" label="name" data={user?.name} />
+        <SingleInput name="email" label="email" data={user?.email} />
+        <MultiInput name="description" data={user?.description} />
+        <SingleInput
+          name="profession"
+          label="profession"
+          data={user?.profession}
+        />
+        <SingleInput
+          name="twitter_link"
+          label="twitter_link"
+          data={user?.twitter_link}
+        />
+        <SingleInput
+          name="linkedin_link"
+          label="linkedin_link"
+          data={user?.linkedin_link}
+        />
+        <SingleInput
+          name="github_link"
+          label="github_link"
+          data={user?.github_link}
+        />
+        <SubmitButton label="Submit User Details" />
       </form>
     </FormProvider>
   );

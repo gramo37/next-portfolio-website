@@ -11,11 +11,7 @@ type TSkillForm = {
 
 export default function SkillForm(props: any) {
   const { user } = props;
-  const methods = useForm<TSkillForm>({
-    defaultValues: {
-      skills: user?.skills || [],
-    },
-  });
+  const methods = useForm<TSkillForm>();
   const { handleSubmit } = methods;
   const emptyData = {
     skill_name: "",
@@ -32,7 +28,7 @@ export default function SkillForm(props: any) {
   return (
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <ArrayInput name="skills" emptyData={emptyData} />
+        <ArrayInput name="skills" data={user?.skills}/>
         <SubmitButton label="Submit Skill Details"/>
       </form>
     </FormProvider>

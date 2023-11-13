@@ -11,18 +11,9 @@ type TSkillForm = {
 
 export default function WorkExperienceForm(props: any) {
   const { user } = props;
-  const methods = useForm<TSkillForm>({
-    defaultValues: {
-      workExperience: user?.workExperience || [],
-    },
-  });
+  const methods = useForm<TSkillForm>();
   const { handleSubmit } = methods;
-  const emptyData = {
-    company_name: "",
-    profession: "",
-    duration: "",
-    description: [""],
-  };
+
   const { mutate } = useSubmitData("workExperience");
 
   const onSubmit: SubmitHandler<TSkillForm> = (data) => {
@@ -33,7 +24,7 @@ export default function WorkExperienceForm(props: any) {
   return (
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <ArrayInput name="workExperience" emptyData={emptyData} />
+        <ArrayInput name="workExperience" data={user?.workExperience}/>
         <SubmitButton label="Submit Work Experience Details"/>
       </form>
     </FormProvider>

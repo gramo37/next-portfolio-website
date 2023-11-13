@@ -1,13 +1,15 @@
 export interface TMultiLineFormData {
-  name: string
+  name: string;
+  data?: any;
 }
 
 export interface TSingleFormData {
   label: string;
   name: string;
+  data?: string;
 }
 
 export interface TArrayInputFormData {
   name: string;
-  emptyData: any;
+  data?: any;
 }

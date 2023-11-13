@@ -15,7 +15,7 @@ export default function ObjectInput(props: any) {
           return <MultiInput key={key} name={key} />;
         if (typeof user?.[key] === typeof [{ a: "b" }]) {
           const empty_data = emptyData[key]
-          return <ArrayInput key={key} name={key} emptyData={empty_data} />;
+          return <ArrayInput key={key} name={key} />;
         }
       })}
     </>

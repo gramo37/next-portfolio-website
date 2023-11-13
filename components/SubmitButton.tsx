@@ -1,9 +1,9 @@
 import { Button } from "./ui/button";
 
 const SubmitButton: React.FC<any> = (props: any) => {
-  const { label } = props;
+  const { label, className } = props;
   return (
-    <Button type="submit" className="relative -translate-x-1/2 left-1/2 m-2">
+    <Button type="submit" className={`relative -translate-x-1/2 left-1/2 m-2 ` + className} >
       {label}
     </Button>
   );

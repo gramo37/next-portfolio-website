@@ -11,18 +11,9 @@ type TEducationForm = {
 
 export default function EducationForm(props: any) {
   const { user } = props;
-  const methods = useForm<TEducationForm>({
-    defaultValues: {
-      education: user?.education || [],
-    },
-  });
+  const methods = useForm<TEducationForm>();
   const { handleSubmit } = methods;
-  const emptyData = {
-    degree_name: "",
-    university_name: "",
-    duration: "",
-    description: [""],
-  };
+
   const { mutate } = useSubmitData("education");
 
   const onSubmit: SubmitHandler<TEducationForm> = (data) => {
@@ -32,7 +23,7 @@ export default function EducationForm(props: any) {
   return (
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <ArrayInput name="education" emptyData={emptyData} />
+        <ArrayInput name="education" data={user?.education}/>
         <SubmitButton label="Submit Education Details"/>
       </form>
     </FormProvider>
