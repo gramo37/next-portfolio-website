@@ -4,6 +4,7 @@ import { TEducation } from "@/types/user";
 import React from "react";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 import ArrayInput from "../DynamicInputs/ArrayInput";
+import { Button } from "../ui/button";
 
 type TEducationForm = {
   education: TEducation[];
@@ -22,9 +23,9 @@ export default function EducationForm(props: any) {
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form className="flex items-center flex-col" onSubmit={handleSubmit(onSubmit)}>
         <ArrayInput name="education" data={user?.education}/>
-        <SubmitButton label="Submit Education Details"/>
+        <Button className="m-2">Submit Education Details</Button>
       </form>
     </FormProvider>
   );

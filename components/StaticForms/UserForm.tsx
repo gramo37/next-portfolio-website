@@ -5,6 +5,7 @@ import useSubmitData from "@/hooks/useSubmitData";
 import { TUser } from "@/types/user";
 import React from "react";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
+import { Button } from "../ui/button";
 
 export default function UserForm(props: any) {
   const { user } = props;
@@ -28,33 +29,35 @@ export default function UserForm(props: any) {
 
   return (
     <FormProvider {...methods}>
-      <h1 className="text-2xl font-bold text-center">User Info</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <SingleInput name="name" label="name" data={user?.name} />
-        <SingleInput name="email" label="email" data={user?.email} />
-        <MultiInput name="description" data={user?.description} />
-        <SingleInput
-          name="profession"
-          label="profession"
-          data={user?.profession}
-        />
-        <SingleInput
-          name="twitter_link"
-          label="twitter_link"
-          data={user?.twitter_link}
-        />
-        <SingleInput
-          name="linkedin_link"
-          label="linkedin_link"
-          data={user?.linkedin_link}
-        />
-        <SingleInput
-          name="github_link"
-          label="github_link"
-          data={user?.github_link}
-        />
-        <SubmitButton label="Submit User Details" />
-      </form>
+      <div className="flex flex-col justify-center items-center">
+        <h1 className="text-2xl font-bold text-center">User Info</h1>
+        <form className="flex items-center flex-col border p-2 relative" onSubmit={handleSubmit(onSubmit)}>
+          <SingleInput name="name" label="name" data={user?.name} />
+          <SingleInput name="email" label="email" data={user?.email} />
+          <MultiInput name="description" data={user?.description} />
+          <SingleInput
+            name="profession"
+            label="profession"
+            data={user?.profession}
+          />
+          <SingleInput
+            name="twitter_link"
+            label="twitter_link"
+            data={user?.twitter_link}
+          />
+          <SingleInput
+            name="linkedin_link"
+            label="linkedin_link"
+            data={user?.linkedin_link}
+          />
+          <SingleInput
+            name="github_link"
+            label="github_link"
+            data={user?.github_link}
+          />
+          <Button className="w-fit">Submit User Details</Button>
+        </form>
+      </div>
     </FormProvider>
   );
 }

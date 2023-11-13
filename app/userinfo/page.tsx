@@ -10,6 +10,8 @@ import useGetUserInfo from "@/hooks/useGetUserInfo";
 import React from "react";
 
 export default function Update() {
+  // We can directly use await getUserInfo(); without making an API call from frontend
+  // Here I have used useQuery just for my understanding
   const { user, isError, isLoading } = useGetUserInfo();
   const { menu } = useGetMenuStore();
 

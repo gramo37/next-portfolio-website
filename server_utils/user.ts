@@ -77,74 +77,179 @@ export async function updateUserInfo(user: TUser) {
   return updatedUser;
 }
 
-export async function updateProjectInfo(project: TProject) {
-  const updatedProject = await prisma.project.update({
-    where: { id: 1 },
-    data: project,
-  });
-  if (!updatedProject) throw new Error("Project not updated! Try again..");
-  return updatedProject;
+export async function updateProjectInfo(project: TProject[]) {
+  try {
+    // Delete unnecessary fields
+    let allFields = await prisma.project.findMany({
+      where: { userId: 1 },
+      select: { id: true },
+    });
+    let requiredIDs = new Set(
+      project.map((item) => item.id).filter((item) => Boolean(item))
+    );
+    let currIDs = allFields.map((item) => item.id);
+    let toBeDeletedIDs = currIDs.filter((item) => !requiredIDs.has(item));
+    await prisma.project.deleteMany({
+      where: {
+        id: {
+          in: toBeDeletedIDs,
+        },
+      },
+    });
+
+    let toBeCreated: any = [];
+    let toBeUpdated: any = [];
+    project.forEach((item) => {
+      if (item?.id) toBeUpdated.push(item);
+      else toBeCreated.push({ ...item, userId: 1 });
+    });
+
+    await prisma.project.createMany({
+      data: toBeCreated,
+    });
+
+    for (let i = 0; i < toBeUpdated.length; i++) {
+      await prisma.project.update({
+        where: { id: toBeUpdated[i].id },
+        data: toBeUpdated[i],
+      });
+    }
+    return "Successfully updated Project Details";
+  } catch (error) {
+    throw new Error("Something went wrong");
+  }
 }
 
-export async function updateSkillInfo(skill: TSkill) {
-  const updatedSkill = await prisma.skill.update({
-    where: { id: 1 },
-    data: skill,
-  });
-  if (!updatedSkill) throw new Error("Skill not updated! Try again..");
-  return updatedSkill;
+export async function updateSkillInfo(skills: TSkill[]) {
+  try {
+    // Delete unnecessary fields
+    let allFields = await prisma.skill.findMany({
+      where: { userId: 1 },
+      select: { id: true },
+    });
+    let requiredIDs = new Set(
+      skills.map((item) => item.id).filter((item) => Boolean(item))
+    );
+    let currIDs = allFields.map((item) => item.id);
+    let toBeDeletedIDs = currIDs.filter((item) => !requiredIDs.has(item));
+    await prisma.skill.deleteMany({
+      where: {
+        id: {
+          in: toBeDeletedIDs,
+        },
+      },
+    });
+
+    let toBeCreated: any = [];
+    let toBeUpdated: any = [];
+    skills.forEach((item) => {
+      item["proficiency"] = Number(item["proficiency"])
+      item["maximum_proficiency"] = Number(item["maximum_proficiency"])
+      if (item?.id) toBeUpdated.push(item);
+      else toBeCreated.push({ ...item, userId: 1 });
+    });
+
+    await prisma.skill.createMany({
+      data: toBeCreated,
+    });
+
+    for (let i = 0; i < toBeUpdated.length; i++) {
+      await prisma.skill.update({
+        where: { id: toBeUpdated[i].id },
+        data: toBeUpdated[i],
+      });
+    }
+    return "Successfully updated Skill Details";
+  } catch (error) {
+    throw new Error("Something went wrong");
+  }
 }
 
 export async function updateEducationInfo(education: TEducation[]) {
-  // Delete unnecessary fields
-  let allFields = await prisma.education.findMany({
-    where: { userId: 1 },
-    select: { id: true },
-  });
-  let requiredIDs = new Set(
-    education.map((item) => item.id).filter((item) => Boolean(item))
-  );
-  let currIDs = allFields.map((item) => item.id);
-  let toBeDeletedIDs = currIDs.filter((item) => !requiredIDs.has(item));
-  for (let i = 0; i < toBeDeletedIDs.length; i++) {
-    await prisma.education.delete({
+  try {
+    // Delete unnecessary fields
+    let allFields = await prisma.education.findMany({
+      where: { userId: 1 },
+      select: { id: true },
+    });
+    let requiredIDs = new Set(
+      education.map((item) => item.id).filter((item) => Boolean(item))
+    );
+    let currIDs = allFields.map((item) => item.id);
+    let toBeDeletedIDs = currIDs.filter((item) => !requiredIDs.has(item));
+    await prisma.education.deleteMany({
       where: {
-        id: toBeDeletedIDs[i],
+        id: {
+          in: toBeDeletedIDs,
+        },
       },
     });
-  }
 
-  let updatedEducation: TEducation[] = [];
-  const ps: Promise<TEducation>[] = [];
-  education.forEach((item) => {
-    let newData: Promise<TEducation>;
-    // Update if id is given
-    if (item?.id) {
-      newData = prisma.education.update({
-        where: { id: item?.id },
-        data: item,
-      });
-    // Create a new entry if id is not given
-    } else {
-      newData = prisma.education.create({
-        data: { ...item, userId: 1 },
+    let toBeCreated: any = [];
+    let toBeUpdated: any = [];
+    education.forEach((item) => {
+      if (item?.id) toBeUpdated.push(item);
+      else toBeCreated.push({ ...item, userId: 1 });
+    });
+
+    await prisma.education.createMany({
+      data: toBeCreated,
+    });
+
+    for (let i = 0; i < toBeUpdated.length; i++) {
+      await prisma.education.update({
+        where: { id: toBeUpdated[i].id },
+        data: toBeUpdated[i],
       });
     }
-    ps.push(newData);
-  });
-  updatedEducation = await Promise.all(ps);
-  if (!updatedEducation) throw new Error("Education not updated! Try again..");
-  return updatedEducation;
+    return "Successfully updated Education Details";
+  } catch (error) {
+    throw new Error("Something went wrong");
+  }
 }
 
-export async function updateWorkExperienceInfo(
-  workExperience: TWorkExperience
-) {
-  const updatedWorkExperience = await prisma.workExperience.update({
-    where: { id: 1 },
-    data: workExperience,
-  });
-  if (!updatedWorkExperience)
-    throw new Error("WorkExperience not updated! Try again..");
-  return updatedWorkExperience;
+export async function updateWorkExperienceInfo(workExperience: TWorkExperience[]) {
+  try {
+    // Delete unnecessary fields
+    let allFields = await prisma.workExperience.findMany({
+      where: { userId: 1 },
+      select: { id: true },
+    });
+    let requiredIDs = new Set(
+      workExperience.map((item) => item.id).filter((item) => Boolean(item))
+    );
+    let currIDs = allFields.map((item) => item.id);
+    let toBeDeletedIDs = currIDs.filter((item) => !requiredIDs.has(item));
+    await prisma.workExperience.deleteMany({
+      where: {
+        id: {
+          in: toBeDeletedIDs,
+        },
+      },
+    });
+
+    let toBeCreated: any = [];
+    let toBeUpdated: any = [];
+    workExperience.forEach((item) => {
+      if (item?.id) toBeUpdated.push(item);
+      else toBeCreated.push({ ...item, userId: 1 });
+    });
+
+    await prisma.workExperience.createMany({
+      data: toBeCreated,
+    });
+
+    for (let i = 0; i < toBeUpdated.length; i++) {
+      await prisma.workExperience.update({
+        where: { id: toBeUpdated[i].id },
+        data: toBeUpdated[i],
+      });
+    }
+    return "Successfully updated Work Experience Details";
+  } catch (error) {
+    throw new Error("Something went wrong");
+  }
 }
+
+// Create a function to update all fields at once
+export async function updateAllUserInfo(data: any) {}

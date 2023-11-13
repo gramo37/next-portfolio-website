@@ -15,9 +15,6 @@ export default function Formview(props: any) {
     } else {
       result = <MultiInput name={name} data={data} />;
     }
-    // if (isArrayofObjectsOrStrings(data) === "array of strings")
-    //   result = <MultiInput name={name} data={data}/>;
-    // else result = <ArrayInput name={name} data={data} emptyData={{}} />;
   } else if (dataType === "object") {
     result = Object.keys(data).map((key) => {
       return <Formview name={key} key={key} data={data?.[key]} />;

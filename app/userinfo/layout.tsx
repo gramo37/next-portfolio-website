@@ -26,6 +26,11 @@ const sidebarNavItems: any = [
   },
 ];
 
+// TODOS 
+  // -> 1) Create backend functions for Skills, Projects and Work Experience
+  // -> 2) Create backend functions for Dynamic forms
+  // -> 3) Create separate project using file system (avoiding use DB for small use cases)
+
 const inter = Inter({ subsets: ["latin"] });
 
 export default function SettingsLayout({
