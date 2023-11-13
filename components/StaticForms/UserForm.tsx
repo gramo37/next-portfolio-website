@@ -1,6 +1,6 @@
-import MultiInput from "@/components/MultiInput";
-import SingleInput from "@/components/SingleInput";
-import SubmitButton from "@/components/SubmitButton";
+import MultiInput from "@/components/DynamicInputs/MultiInput";
+import SingleInput from "@/components/DynamicInputs/SingleInput";
+import SubmitButton from "@/components/ui/SubmitButton";
 import useSubmitData from "@/hooks/useSubmitData";
 import { TUser } from "@/types/user";
 import React from "react";

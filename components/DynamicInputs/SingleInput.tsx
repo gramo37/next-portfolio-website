@@ -3,7 +3,7 @@ import { useFormContext } from "react-hook-form";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { useEffect } from "react";
-import { localName } from "./utils/getLocalName";
+import { localName } from "../utils/getLocalName";
 
 const SingleInput: React.FC<TSingleFormData> = (props) => {
   const { name, label, data } = props;

@@ -1,10 +1,10 @@
 "use client";
 
-import EducationForm from "@/components/Forms/EducationForm";
-import ProjectForm from "@/components/Forms/ProjectForm";
-import SkillForm from "@/components/Forms/SkillForm";
-import UserForm from "@/components/Forms/UserForm";
-import WorkExperienceForm from "@/components/Forms/WorkExperienceForm";
+import EducationForm from "@/components/StaticForms/EducationForm";
+import ProjectForm from "@/components/StaticForms/ProjectForm";
+import SkillForm from "@/components/StaticForms/SkillForm";
+import UserForm from "@/components/StaticForms/UserForm";
+import WorkExperienceForm from "@/components/StaticForms/WorkExperienceForm";
 import useGetMenuStore from "@/context/StoreCurrentMenu";
 import useGetUserInfo from "@/hooks/useGetUserInfo";
 import React from "react";

@@ -2,11 +2,11 @@ import { TArrayInputFormData } from "@/types/components";
 import { useFormContext } from "react-hook-form";
 import SingleInput from "./SingleInput";
 import MultiInput from "./MultiInput";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { AiFillDelete } from "react-icons/ai";
 import { useEffect } from "react";
-import { emptyData as ed } from "./utils/getEmptyData";
-import { localName } from "./utils/getLocalName";
+import { emptyData as ed } from "../utils/getEmptyData";
+import { localName } from "../utils/getLocalName";
 
 const ArrayInput: React.FC<TArrayInputFormData> = (
   props: TArrayInputFormData

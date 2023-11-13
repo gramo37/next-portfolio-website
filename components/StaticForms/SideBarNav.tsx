@@ -12,7 +12,7 @@ interface SidebarNavProps extends React.HTMLAttributes<HTMLElement> {
   }[];
 }
 
-export function SidebarNav({ className, items }: any) {
+export function SidebarNav({ className, items }: SidebarNavProps) {
   const { setMenu, menu } = useGetMenuStore();
   const updateMenu = (menu: string) => {
     setMenu(menu);

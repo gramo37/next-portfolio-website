@@ -1,9 +1,9 @@
-import SubmitButton from "@/components/SubmitButton";
+import SubmitButton from "@/components/ui/SubmitButton";
 import useSubmitData from "@/hooks/useSubmitData";
 import { TProject } from "@/types/user";
 import React from "react";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
-import ArrayInput from "../ArrayInput";
+import ArrayInput from "../DynamicInputs/ArrayInput";
 
 type TProjectForm = {
   project: TProject[];

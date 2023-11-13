@@ -10,7 +10,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { AiFillDelete } from "react-icons/ai";
-import { localName, localNameForArrays } from "./utils/getLocalName";
+import { localName, localNameForArrays } from "../utils/getLocalName";
 
 const InputArrayForm: React.FC<TMultiLineFormData> = (
   props: TMultiLineFormData

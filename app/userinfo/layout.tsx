@@ -1,5 +1,5 @@
 import { Separator } from "@/components/ui/separator";
-import { SidebarNav } from "@/components/SideBarNav";
+import { SidebarNav } from "@/components/StaticForms/SideBarNav";
 import ReactQueryProvider from "@/components/Providers";
 import { Inter } from "next/font/google";
 

@@ -1,4 +1,4 @@
-import FormContainer from "@/components/FormView/FormContainer";
+import FormContainer from "@/components/DynamicForm/FormContainer";
 import { getUserInfo } from "@/server_utils/user";
 
 export default async function UpdatePage() {

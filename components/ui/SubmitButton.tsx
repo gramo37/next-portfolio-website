@@ -1,4 +1,4 @@
-import { Button } from "./ui/button";
+import { Button } from "./button";
 
 const SubmitButton: React.FC<any> = (props: any) => {
   const { label, className } = props;
