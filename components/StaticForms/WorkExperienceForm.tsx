@@ -1,4 +1,3 @@
-import SubmitButton from "@/components/ui/SubmitButton";
 import useSubmitData from "@/hooks/useSubmitData";
 import { TWorkExperience } from "@/types/user";
 import React from "react";
@@ -25,7 +24,7 @@ export default function WorkExperienceForm(props: any) {
     <FormProvider {...methods}>
       <form className="flex items-center flex-col" onSubmit={handleSubmit(onSubmit)}>
         <ArrayInput name="workExperience" data={user?.workExperience} />
-        <Button className="m-2">Submit Work Experience Details</Button>
+        <Button className="m-2 w-fit">Submit Work Experience Details</Button>
       </form>
     </FormProvider>
   );

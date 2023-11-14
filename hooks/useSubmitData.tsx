@@ -1,17 +1,20 @@
-import { TUser } from "@/types/user";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { useToast } from "@/components/ui/use-toast"
 
 export default function useSubmitData(formType: string) {
-  const router = useRouter();
+  const { toast } = useToast();
   return useMutation({
     mutationFn: async (data: any) => {
       return await axios.post(`/api?form=${formType}`, data);
     },
     onSuccess: (data) => {
-      router.push('/')
-      // If you want to stay on the same page please invalidate the userinfo query
+      toast({
+        variant: "success",
+        title: "Success",
+        description: "Data successfully updated",
+      })
     },
   });
 }

@@ -3,12 +3,14 @@
 import { FormProvider, useForm } from "react-hook-form";
 import Formview from ".";
 import { Button } from "../ui/button";
+import useSubmitData from "@/hooks/useSubmitData";
 
 export default function FormContainer(props: any) {
   const { data } = props;
   const methods = useForm();
+  const { mutate } = useSubmitData("all");
   const onSubmit = (data: any) => {
-    console.log(data);
+    mutate(data);
   };
   return (
     <FormProvider {...methods}>

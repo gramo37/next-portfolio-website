@@ -1,4 +1,3 @@
-import SubmitButton from "@/components/ui/SubmitButton";
 import useSubmitData from "@/hooks/useSubmitData";
 import { TEducation } from "@/types/user";
 import React from "react";

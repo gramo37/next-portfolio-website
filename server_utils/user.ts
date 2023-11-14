@@ -143,8 +143,8 @@ export async function updateSkillInfo(skills: TSkill[]) {
     let toBeCreated: any = [];
     let toBeUpdated: any = [];
     skills.forEach((item) => {
-      item["proficiency"] = Number(item["proficiency"])
-      item["maximum_proficiency"] = Number(item["maximum_proficiency"])
+      item["proficiency"] = Number(item["proficiency"]);
+      item["maximum_proficiency"] = Number(item["maximum_proficiency"]);
       if (item?.id) toBeUpdated.push(item);
       else toBeCreated.push({ ...item, userId: 1 });
     });
@@ -208,7 +208,9 @@ export async function updateEducationInfo(education: TEducation[]) {
   }
 }
 
-export async function updateWorkExperienceInfo(workExperience: TWorkExperience[]) {
+export async function updateWorkExperienceInfo(
+  workExperience: TWorkExperience[]
+) {
   try {
     // Delete unnecessary fields
     let allFields = await prisma.workExperience.findMany({
@@ -251,5 +253,27 @@ export async function updateWorkExperienceInfo(workExperience: TWorkExperience[]
   }
 }
 
-// Create a function to update all fields at once
-export async function updateAllUserInfo(data: any) {}
+export async function updateAllUserInfo(data: any) {
+  try {
+    let user: TUser = {
+      email: data?.name || "",
+      name: data?.email || "",
+      description: data?.description || [],
+      profession: data?.profession || "",
+      twitter_link: data?.twitter_link || "",
+      linkedin_link: data?.linkedin_link || "",
+      github_link: data?.github_link || "",
+      phone: data?.phone || "",
+    };
+    await updateUserInfo(user);
+    if (data?.education) await updateEducationInfo(data?.education);
+    if (data?.project) await updateProjectInfo(data?.project);
+    if (data?.skills) await updateSkillInfo(data?.skills);
+    if (data?.workExperience)
+      await updateWorkExperienceInfo(data?.workExperience);
+    return "Update Successful";
+  } catch (error) {
+    console.log(error);
+    return "Something went wrong";
+  }
+}

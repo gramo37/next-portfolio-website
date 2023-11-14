@@ -1,4 +1,4 @@
-import { getUserInfo, updateEducationInfo, updateProjectInfo, updateSkillInfo, updateUserInfo, updateWorkExperienceInfo } from "@/server_utils/user";
+import { getUserInfo, updateAllUserInfo, updateEducationInfo, updateProjectInfo, updateSkillInfo, updateUserInfo, updateWorkExperienceInfo } from "@/server_utils/user";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
@@ -21,6 +21,9 @@ export async function POST(request: NextRequest) {
       break;
     case "workExperience":
       updatedData = await updateWorkExperienceInfo(body);
+      break;
+    case "all":
+      updatedData = await updateAllUserInfo(body)
       break;
     default:
       updatedData = {}

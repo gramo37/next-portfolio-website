@@ -1,6 +1,5 @@
 import MultiInput from "@/components/DynamicInputs/MultiInput";
 import SingleInput from "@/components/DynamicInputs/SingleInput";
-import SubmitButton from "@/components/ui/SubmitButton";
 import useSubmitData from "@/hooks/useSubmitData";
 import { TUser } from "@/types/user";
 import React from "react";
@@ -55,7 +54,7 @@ export default function UserForm(props: any) {
             label="github_link"
             data={user?.github_link}
           />
-          <Button className="w-fit">Submit User Details</Button>
+          <Button className="m-2 w-fit">Submit User Details</Button>
         </form>
       </div>
     </FormProvider>
