@@ -41,3 +41,10 @@ export interface TProject {
   background_img_url: string;
   project_link: string;
 }
+
+export type TUserDetails = TUser & {
+  education: TEducation[];
+  skills: TSkill[];
+  project: TProject[];
+  workExperience: TWorkExperience[];
+};

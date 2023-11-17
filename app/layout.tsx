@@ -1,9 +1,24 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import { Kaushan_Script, Lato, Space_Mono } from "next/font/google";
 import ReactQueryProvider from "@/components/Providers";
 
-const inter = Inter({ subsets: ["latin"] });
+const kaushan_script = Kaushan_Script({
+  subsets: ["latin"],
+  variable: "--primary-font",
+  weight: "400",
+});
+
+const lato = Lato({
+  subsets: ["latin"],
+  variable: "--secondary-font",
+  weight: "400",
+});
+
+const space_mono = Space_Mono({
+  subsets: ["latin"],
+  variable: "--tertiary-font",
+  weight: "400",
+});
 
 export const metadata: Metadata = {
   title: "Prasanna Gramopadhye",
@@ -17,7 +32,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body
+        className={`${kaushan_script.variable} ${space_mono.variable} ${lato.variable}`}
+      >
         <ReactQueryProvider>{children}</ReactQueryProvider>
       </body>
     </html>
