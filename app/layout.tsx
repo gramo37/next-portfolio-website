@@ -8,17 +8,18 @@ const kaushan_script = Kaushan_Script({
   weight: "400",
 });
 
-const lato = Lato({
+const space_mono = Space_Mono({
   subsets: ["latin"],
   variable: "--secondary-font",
   weight: "400",
 });
 
-const space_mono = Space_Mono({
+const lato = Lato({
   subsets: ["latin"],
   variable: "--tertiary-font",
   weight: "400",
 });
+
 
 export const metadata: Metadata = {
   title: "Prasanna Gramopadhye",
