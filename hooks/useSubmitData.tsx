@@ -1,6 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import { useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast"
 
 export default function useSubmitData(formType: string) {

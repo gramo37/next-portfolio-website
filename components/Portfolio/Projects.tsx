@@ -1,24 +1,31 @@
 import { TProject } from "@/types/user";
+import styles from "@/components/css/Project.module.css"
 
 export default function Projects(props: { project: TProject[] }) {
   const { project } = props;
   return (
-    <>
-      {project.map((item) => {
-        return (
-          <div key={item.id}>
-            <p>{item.project_name}</p>
-            <ol>
-              {item.description.map((point, index) => {
-                return <li key={index}>- {point}</li>;
+    <div className={styles["projects-container"]}>
+      <h1>Projects</h1>
+      <div className={styles["projects-information"]}>
+        {project?.map((item, index) => {
+          return (
+            <a href={item.project_link}
+              key={index}
+              style={{ backgroundImage: `url(${item.background_img_url})` }}
+              className={styles["project-information-item"]}
+            >
+              <h3>{item.project_name}</h3>
+              {item?.description?.map((key, index) => {
+                if (index >= 2) return null;
+                return <p key={index}>{key}</p>;
               })}
-            </ol>
-            <p>{item.techStack}</p>
-            <p>{item.project_link}</p>
-            <p>{item.background_img_url}</p>
-          </div>
-        );
-      })}
-    </>
+              {item?.techStack?.map((item, index) => {
+                return <span key={index}>{item}</span>
+              })}
+            </a>
+          );
+        })}
+      </div>
+    </div>
   );
 }

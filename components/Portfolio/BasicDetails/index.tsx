@@ -6,7 +6,6 @@ export default function BasicDetails(props: TUser) {
   const { email, name, description, profession, phone, ...links } = props;
   return (
     <>
-    {console.log(name)}
       <Dashboard name={name} profession={profession} {...links} />
       <About
         name={name}

@@ -1,23 +1,28 @@
 import { TUserDetails } from "@/types/user";
 import BasicDetails from "./BasicDetails/index";
-import Education from "./Education";
 import Skills from "./Skills";
 import Projects from "./Projects";
-import WorkExperience from "./WorkExperience";
+import Resume from "./Resume";
+import Contact from "./Contact";
+import Footer from "./Footer";
+import GoToTop from "./GoToTop";
 
 export default function Portfolio(props: TUserDetails) {
   const { education, skills, project, workExperience, ...rest } = props;
+  const links = {
+    twitter_link: rest.twitter_link,
+    linkedin_link: rest.linkedin_link,
+    github_link: rest.github_link,
+  };
   return (
     <>
+      <GoToTop />
       <BasicDetails {...rest} />
-      <br />
-      <Education education={education} />
-      <br />
+      <Resume education={education} workExperience={workExperience} />
       <Skills skills={skills} />
-      <br />
       <Projects project={project} />
-      <br />
-      <WorkExperience workExperience={workExperience} />
+      <Contact />
+      <Footer {...links} />
     </>
   );
 }

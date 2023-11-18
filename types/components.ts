@@ -13,3 +13,14 @@ export interface TArrayInputFormData {
   name: string;
   data?: any;
 }
+
+export type TLinks = {
+  twitter_link: string;
+  linkedin_link: string;
+  github_link: string;
+  fontSize?: string | number;
+  backgroundColor?: string;
+  padding?: string | number;
+  borderRadius?: string | number;
+  color?: string;
+};

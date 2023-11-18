@@ -1,17 +1,7 @@
 import { FaTwitter, FaLinkedin } from "react-icons/fa";
 import { FaSquareGithub } from "react-icons/fa6";
 import styles from "@/components/css/Link.module.css"
-
-type TLinks = {
-  twitter_link: string;
-  linkedin_link: string;
-  github_link: string;
-  fontSize?: string | number;
-  backgroundColor?: string;
-  padding?: string | number;
-  borderRadius?: string | number;
-  color?: string;
-};
+import { TLinks } from "@/types/components";
 
 export default function Links(props: TLinks) {
   const { twitter_link, linkedin_link, github_link, ...options } = props;
