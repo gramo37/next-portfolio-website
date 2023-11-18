@@ -24,3 +24,8 @@ export type TLinks = {
   borderRadius?: string | number;
   color?: string;
 };
+
+export type TLoginForm = {
+  email: string;
+  password: string;
+};

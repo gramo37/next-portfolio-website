@@ -8,17 +8,7 @@ import { Button } from "../ui/button";
 
 export default function UserForm(props: any) {
   const { user } = props;
-  const methods = useForm<TUser>({
-    defaultValues: {
-      name: user?.name || "",
-      email: user?.email || "",
-      profession: user?.profession || "",
-      twitter_link: user?.twitter_link || "",
-      linkedin_link: user?.linkedin_link || "",
-      github_link: user?.github_link || "",
-      description: user?.description || [""],
-    },
-  });
+  const methods = useForm<TUser>();
   const { handleSubmit } = methods;
   const { mutate } = useSubmitData("user");
 

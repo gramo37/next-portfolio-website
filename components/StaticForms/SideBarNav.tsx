@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import useGetMenuStore from "@/context/StoreCurrentMenu";
+import Logout from "../ui/CustomLogoutButton";
 
 interface SidebarNavProps extends React.HTMLAttributes<HTMLElement> {
   items: {
@@ -41,6 +42,7 @@ export function SidebarNav({ className, items }: SidebarNavProps) {
           {item.title}
         </Button>
       ))}
+      <Logout />
     </nav>
   );
 }
