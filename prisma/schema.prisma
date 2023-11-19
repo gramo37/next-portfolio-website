@@ -19,6 +19,8 @@ model User {
   twitter_link String
   linkedin_link String
   github_link String
+  resume_link String
+  profile_photo String
   phone String
   workExperience WorkExperience[]
   education Education[]

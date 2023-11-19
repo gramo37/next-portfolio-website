@@ -13,12 +13,12 @@ export default function useLogin() {
       return token;
     },
     onSuccess: (data) => {
-      router.push("/userinfo");
       toast({
         variant: "success",
         title: "Success",
         description: "Login Successfull",
       });
+      router.push("/userinfo");
     },
   });
 }

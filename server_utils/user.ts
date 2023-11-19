@@ -25,6 +25,8 @@ export async function getUserInfo(): Promise<TUserInfo> {
       twitter_link: true,
       linkedin_link: true,
       github_link: true,
+      resume_link: true,
+      profile_photo: true,
       phone: true,
       education: {
         select: {
@@ -256,8 +258,10 @@ export async function updateWorkExperienceInfo(
 export async function updateAllUserInfo(data: any) {
   try {
     let user: TUser = {
-      email: data?.name || "",
-      name: data?.email || "",
+      name: data?.name || "",
+      email: data?.email || "",
+      resume_link: data?.resume_link || "",
+      profile_photo: data?.profile_photo || "",
       description: data?.description || [],
       profession: data?.profession || "",
       twitter_link: data?.twitter_link || "",

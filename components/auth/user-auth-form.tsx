@@ -23,8 +23,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   }, [data]);
 
   const onSubmit: SubmitHandler<TLoginForm> = (data) => {
-    const token = mutate(data);
-    console.log(token);
+    mutate(data);
   };
 
   return (

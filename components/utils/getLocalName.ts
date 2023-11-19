@@ -20,6 +20,8 @@ export const localName: any = {
   background_img_url: "Background Image",
   project_link: "Project Link",
   company_name: "Company Name",
+  resume_link: "Resume Link",
+  profile_photo: "Profile Photo",
   "description.description": "Description",
   "education.description": "Education Description",
   "project.description": "Project Description",

@@ -8,12 +8,12 @@ type TAboutProps = {
   twitter_link: string;
   linkedin_link: string;
   github_link: string;
+  resume_link: string;
   description: string[];
 };
 
 export default function About(props: TAboutProps) {
-  const { name, phone, email, description, ...links } = props;
-  const resumeLink = "https://drive.google.com/file/d/1x2FyAVHZsbo8aBqcdNSqXAm16QIYmtkM/view";
+  const { name, phone, email, description, resume_link, ...links } = props;
   return (
     <div className={styles["about-me-container"]}>
       <h1>About Me</h1>
@@ -50,7 +50,7 @@ export default function About(props: TAboutProps) {
           borderRadius={"5px"}
         />
         <div>
-          <a className={styles["download-cv-button"]} href={resumeLink}>
+          <a className={styles["download-cv-button"]} href={resume_link}>
             Download CV
           </a>
         </div>

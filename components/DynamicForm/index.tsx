@@ -1,7 +1,8 @@
 import ArrayInput from "../DynamicInputs/ArrayInput";
+import { InputFile } from "../DynamicInputs/FileInput";
 import MultiInput from "../DynamicInputs/MultiInput";
 import SingleInput from "../DynamicInputs/SingleInput";
-import { arrayOfObjectsType } from "../utils/getType";
+import { arrayOfObjectsType, fileType } from "../utils/getType";
 
 export default function Formview(props: any) {
   const { data, name } = props;
@@ -20,7 +21,9 @@ export default function Formview(props: any) {
       return <Formview name={key} key={key} data={data?.[key]} />;
     });
   } else if (dataType === "string") {
-    result = <SingleInput name={name} label={name} data={data} />;
+    if (fileType.includes(name))
+      result = <InputFile name={name} data={data} label="profile_photo"/>;
+    else result = <SingleInput name={name} label={name} data={data} />;
   } else {
     result = <div>Something Went wrong</div>;
   }

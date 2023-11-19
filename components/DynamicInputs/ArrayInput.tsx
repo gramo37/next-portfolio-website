@@ -7,6 +7,8 @@ import { AiFillDelete } from "react-icons/ai";
 import { useEffect } from "react";
 import { emptyData as ed } from "../utils/getEmptyData";
 import { localName } from "../utils/getLocalName";
+import { fileType } from "../utils/getType";
+import { InputFile } from "./FileInput";
 
 const ArrayInput: React.FC<TArrayInputFormData> = (
   props: TArrayInputFormData
@@ -18,7 +20,7 @@ const ArrayInput: React.FC<TArrayInputFormData> = (
   useEffect(() => {
     setValue(name, data);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
 
   const addInput = () => {
     setValue(name, [...getValues(name), emptyData]);
@@ -38,7 +40,17 @@ const ArrayInput: React.FC<TArrayInputFormData> = (
           <div key={index} className="relative border p-2 pt-4 m-2">
             {Object.keys(item).map((key) => {
               if (key === "id") return;
-              if ([typeof "a", typeof 1].includes(typeof item?.[key]))
+              if ([typeof "a", typeof 1].includes(typeof item?.[key])) {
+                if (fileType.includes(`${name}.${key}`)) {
+                  return (
+                    <InputFile
+                      key={key}
+                      label={key}
+                      name={`${name}.${index}.${key}`}
+                      data={item?.[key]}
+                    />
+                  );
+                }
                 return (
                   <SingleInput
                     key={key}
@@ -47,9 +59,14 @@ const ArrayInput: React.FC<TArrayInputFormData> = (
                     data={item?.[key]}
                   />
                 );
+              }
               if (typeof item?.[key] === typeof ["a"])
                 return (
-                  <MultiInput key={key} name={`${name}.${index}.${key}`} data={item?.[key]}/>
+                  <MultiInput
+                    key={key}
+                    name={`${name}.${index}.${key}`}
+                    data={item?.[key]}
+                  />
                 );
             })}
             <div className="absolute top-0 right-0">
@@ -61,10 +78,7 @@ const ArrayInput: React.FC<TArrayInputFormData> = (
           </div>
         );
       })}
-      <Button
-        type="button"
-        onClick={addInput}
-      >
+      <Button type="button" onClick={addInput}>
         Add Array Input
       </Button>
     </div>

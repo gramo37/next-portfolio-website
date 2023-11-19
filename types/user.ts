@@ -8,6 +8,8 @@ export interface TUser {
   linkedin_link: string;
   github_link: string;
   phone: string;
+  profile_photo: string;
+  resume_link: string;
 }
 
 export interface TWorkExperience {

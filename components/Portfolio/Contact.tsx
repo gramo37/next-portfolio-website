@@ -49,7 +49,6 @@ export default function Contact() {
       initialValues,
       validationSchema: contactMeSchema,
       onSubmit: (values, { resetForm }) => {
-        console.log(values)
         if (!sendMail) {
           toast({
             variant: "destructive",
@@ -61,8 +60,6 @@ export default function Contact() {
         resetForm({ values: initialValues });
         setLoading(true);
         if (formRef?.current)
-          console.log("Sending Mail")
-          console.log(formRef?.current, formRef)
           emailjs
             .sendForm(
               "service_npzjtpg",

@@ -8,6 +8,11 @@ export interface TSingleFormData {
   name: string;
   data?: string;
 }
+export interface TFileInputProps {
+  label: string;
+  name: string;
+  data: string;
+}
 
 export interface TArrayInputFormData {
   name: string;

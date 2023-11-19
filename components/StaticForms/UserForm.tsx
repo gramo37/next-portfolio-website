@@ -5,6 +5,7 @@ import { TUser } from "@/types/user";
 import React from "react";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 import { Button } from "../ui/button";
+import { InputFile } from "../DynamicInputs/FileInput";
 
 export default function UserForm(props: any) {
   const { user } = props;
@@ -24,6 +25,7 @@ export default function UserForm(props: any) {
           <SingleInput name="name" label="name" data={user?.name} />
           <SingleInput name="email" label="email" data={user?.email} />
           <MultiInput name="description" data={user?.description} />
+          <InputFile name="profile_photo" label="background_img_url" data={user?.profile_photo} />
           <SingleInput
             name="profession"
             label="profession"
@@ -43,6 +45,11 @@ export default function UserForm(props: any) {
             name="github_link"
             label="github_link"
             data={user?.github_link}
+          />
+          <SingleInput
+            name="resume_link"
+            label="resume_link"
+            data={user?.resume_link}
           />
           <Button className="m-2 w-fit">Submit User Details</Button>
         </form>
