@@ -5,7 +5,11 @@ export const arrayOfObjectsType = [
   "workExperience",
 ];
 
-export const fileType = [
+export const imageType = [
   "profile_photo",
   "project.background_img_url"
+]
+
+export const pdfType = [
+  "resume_link"
 ]

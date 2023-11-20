@@ -9,6 +9,7 @@ export interface TSingleFormData {
   data?: string;
 }
 export interface TFileInputProps {
+  type: string;
   label: string;
   name: string;
   data: string;

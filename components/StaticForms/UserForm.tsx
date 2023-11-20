@@ -25,7 +25,7 @@ export default function UserForm(props: any) {
           <SingleInput name="name" label="name" data={user?.name} />
           <SingleInput name="email" label="email" data={user?.email} />
           <MultiInput name="description" data={user?.description} />
-          <InputFile name="profile_photo" label="background_img_url" data={user?.profile_photo} />
+          <InputFile type="image" name="profile_photo" label="background_img_url" data={user?.profile_photo} />
           <SingleInput
             name="profession"
             label="profession"
@@ -46,7 +46,8 @@ export default function UserForm(props: any) {
             label="github_link"
             data={user?.github_link}
           />
-          <SingleInput
+          <InputFile
+            type="pdf"
             name="resume_link"
             label="resume_link"
             data={user?.resume_link}

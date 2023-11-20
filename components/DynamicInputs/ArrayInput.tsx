@@ -7,7 +7,7 @@ import { AiFillDelete } from "react-icons/ai";
 import { useEffect } from "react";
 import { emptyData as ed } from "../utils/getEmptyData";
 import { localName } from "../utils/getLocalName";
-import { fileType } from "../utils/getType";
+import { imageType } from "../utils/getType";
 import { InputFile } from "./FileInput";
 
 const ArrayInput: React.FC<TArrayInputFormData> = (
@@ -41,10 +41,11 @@ const ArrayInput: React.FC<TArrayInputFormData> = (
             {Object.keys(item).map((key) => {
               if (key === "id") return;
               if ([typeof "a", typeof 1].includes(typeof item?.[key])) {
-                if (fileType.includes(`${name}.${key}`)) {
+                if (imageType.includes(`${name}.${key}`)) {
                   return (
                     <InputFile
                       key={key}
+                      type="image"
                       label={key}
                       name={`${name}.${index}.${key}`}
                       data={item?.[key]}
