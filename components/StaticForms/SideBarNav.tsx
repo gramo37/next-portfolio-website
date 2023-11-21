@@ -22,7 +22,7 @@ export function SidebarNav({ className, items }: SidebarNavProps) {
   return (
     <nav
       className={cn(
-        "flex space-x-2 lg:flex-col lg:space-x-0 lg:space-y-1",
+        "flex justify-center items-center space-x-2 w-full overflow-x-scroll border md:border-0 lg:items-start lg:flex-col lg:space-x-0 lg:space-y-1",
         className
       )}
     >
@@ -42,7 +42,7 @@ export function SidebarNav({ className, items }: SidebarNavProps) {
           {item.title}
         </Button>
       ))}
-      <Logout />
+      <Logout className="hidden lg:block"/>
     </nav>
   );
 }

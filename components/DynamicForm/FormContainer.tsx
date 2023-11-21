@@ -17,9 +17,11 @@ export default function FormContainer(props: any) {
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(onSubmit)}>
         <Formview data={data} name="" />
-        <div className="fixed flex flex-col top-3 right-3 text-sm px-[0.32rem] h-auto m-0 sm:text-lg sm:p-2">
-          <Button className="my-1" type="submit">Submit</Button>
-          <Logout />
+        <div className="flex justify-center items-center text-sm m-2 px-[0.32rem] h-auto sm:text-lg sm:p-2">
+          <Button className="mx-1" type="submit">
+            Submit
+          </Button>
+          <Logout className="mx-1" />
         </div>
       </form>
     </FormProvider>

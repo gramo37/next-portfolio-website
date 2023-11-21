@@ -3,6 +3,7 @@ import { SidebarNav } from "@/components/StaticForms/SideBarNav";
 import ReactQueryProvider from "@/components/Providers";
 import { Inter } from "next/font/google";
 import "../tailwind.css";
+import Logout from "@/components/ui/CustomLogoutButton";
 
 const sidebarNavItems: any = [
   {
@@ -49,6 +50,7 @@ export default function SettingsLayout({
           <p className="text-muted-foreground">
             Manage your portfolio settings.
           </p>
+          <Logout className="lg:hidden my-2" />
         </div>
         <Separator className="my-6" />
         <ReactQueryProvider>

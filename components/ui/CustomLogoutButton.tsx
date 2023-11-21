@@ -1,9 +1,14 @@
+"use client";
+
 import { Button } from "./button";
 import { useRouter } from "next/navigation";
 import { useToast } from "./use-toast";
 import { getCookie } from "../utils";
+import { cn } from "@/lib/utils";
 
-const Logout: React.FC<any> = () => {
+interface TLogoutProps extends React.HTMLAttributes<HTMLElement> {}
+
+export default function Logout({ className }: TLogoutProps) {
   const router = useRouter();
   const {toast} = useToast();
   const logout = () => {
@@ -18,10 +23,8 @@ const Logout: React.FC<any> = () => {
     }
   };
   return (
-    <Button className="w-fit" onClick={logout}>
+    <Button className={cn("w-fit", className)} onClick={logout}>
       Logout
     </Button>
   );
 };
-
-export default Logout;

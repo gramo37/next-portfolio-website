@@ -17,7 +17,8 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const methods = useForm<TLoginForm>();
   const { data, mutate, isPending: isLoading } = useLogin();
 
-  const onSubmit: SubmitHandler<TLoginForm> = (data) => {
+  const onSubmit: SubmitHandler<TLoginForm> = (data, e) => {
+    e?.preventDefault()
     mutate(data);
   };
 
@@ -55,7 +56,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
                 disabled={isLoading}
               />
             </div>
-            <Button disabled={isLoading}>
+            <Button type="submit" disabled={isLoading}>
               {isLoading && (
                 <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
               )}
