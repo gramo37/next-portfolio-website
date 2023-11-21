@@ -16,6 +16,7 @@ export default function FormContainer(props: any) {
   return (
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(onSubmit)}>
+      <h1 className="text-2xl font-bold text-center my-5">Manage Your Portfolio</h1>
         <Formview data={data} name="" />
         <div className="flex justify-center items-center text-sm m-2 px-[0.32rem] h-auto sm:text-lg sm:p-2">
           <Button className="mx-1" type="submit">
