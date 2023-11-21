@@ -10,15 +10,23 @@ export default function useLogin() {
   return useMutation({
     mutationFn: async (data: TLoginForm) => {
       const token = await axios.post(`/api/login`, data);
+      if (token?.data?.token) {
+        document.cookie = `auth=${token?.data?.token}`;
+        toast({
+          variant: "success",
+          title: "Success",
+          description: "Login Successful",
+        });
+        router.push("/userinfo");
+      }
+      else if (token?.data?.error) {
+        toast({
+          variant: "destructive",
+          title: "Failure",
+          description: token?.data?.error,
+        });
+      }
       return token;
-    },
-    onSuccess: (data) => {
-      toast({
-        variant: "success",
-        title: "Success",
-        description: "Login Successfull",
-      });
-      router.push("/userinfo");
     },
   });
 }

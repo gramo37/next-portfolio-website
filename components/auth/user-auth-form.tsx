@@ -17,11 +17,6 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const methods = useForm<TLoginForm>();
   const { data, mutate, isPending: isLoading } = useLogin();
 
-  React.useEffect(() => {
-    // set token in cookie
-    if (data?.data?.token) document.cookie = `auth=${data?.data?.token}`; 
-  }, [data]);
-
   const onSubmit: SubmitHandler<TLoginForm> = (data) => {
     mutate(data);
   };
