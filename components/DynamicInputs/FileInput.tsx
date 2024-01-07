@@ -7,11 +7,10 @@ import { Loader2 } from "lucide-react";
 import { TFileInputProps } from "@/types/components";
 import { localName } from "../utils/getLocalName";
 import FilePreview from "./FileInput/FilePreview";
+import { cloud_name, preset_key } from "@/constants";
 
 export function InputFile(props: TFileInputProps) {
   const { name, data, label, type } = props;
-  const preset_key = "anvirgss";
-  const cloud_name = "dwtxio5dn";
   const url = `https://api.cloudinary.com/v1_1/${cloud_name}/auto/upload`;
   const [image, setImage] = useState<string>("");
   const [loading, setLoading] = useState(false);

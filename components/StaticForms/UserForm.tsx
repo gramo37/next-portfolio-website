@@ -24,6 +24,7 @@ export default function UserForm(props: any) {
         <form className="flex items-center flex-col border p-2 relative" onSubmit={handleSubmit(onSubmit)}>
           <SingleInput name="name" label="name" data={user?.name} />
           <SingleInput name="email" label="email" data={user?.email} />
+          <SingleInput name="phone" label="phone" data={user?.phone} />
           <MultiInput name="description" data={user?.description} />
           <InputFile type="image" name="profile_photo" label="background_img_url" data={user?.profile_photo} />
           <SingleInput

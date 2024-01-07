@@ -18,7 +18,7 @@ const ArrayInput: React.FC<TArrayInputFormData> = (
   const { setValue, getValues, watch } = useFormContext();
 
   useEffect(() => {
-    setValue(name, data);
+    setValue(name, data || []);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

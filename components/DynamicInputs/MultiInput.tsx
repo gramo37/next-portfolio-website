@@ -20,7 +20,7 @@ const InputArrayForm: React.FC<TMultiLineFormData> = (
   const [isOpen, setIsOpen] = React.useState(false);
 
   useEffect(() => {
-    setValue(name, data)
+    setValue(name, data || [])
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
