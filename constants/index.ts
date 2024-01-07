@@ -1,6 +1,7 @@
 const preset_key = "anvirgss";
 const cloud_name = "dwtxio5dn";
-const userRoute = "/api/fs";
+const userRoute = "/api";
+// const userRoute = "/api/fs";
 const loginRoute = "/api/login"
 const dbFileName = "userData.json"
 
