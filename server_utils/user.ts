@@ -14,60 +14,65 @@ type TUserInfo = TUser & {
   project: TProject[];
 };
 
-export async function getUserInfo(): Promise<TUserInfo> {
-  const user = await prisma.user.findUnique({
-    where: { id: 1 },
-    select: {
-      name: true,
-      email: true,
-      description: true,
-      profession: true,
-      twitter_link: true,
-      linkedin_link: true,
-      github_link: true,
-      resume_link: true,
-      profile_photo: true,
-      phone: true,
-      education: {
-        select: {
-          id: true,
-          degree_name: true,
-          university_name: true,
-          duration: true,
-          description: true,
+export async function getUserInfo(): Promise<TUserInfo | null> {
+  try {
+    const user = await prisma.user.findUnique({
+      where: { id: 1 },
+      select: {
+        name: true,
+        email: true,
+        description: true,
+        profession: true,
+        twitter_link: true,
+        linkedin_link: true,
+        github_link: true,
+        resume_link: true,
+        profile_photo: true,
+        phone: true,
+        education: {
+          select: {
+            id: true,
+            degree_name: true,
+            university_name: true,
+            duration: true,
+            description: true,
+          },
+        },
+        skills: {
+          select: {
+            id: true,
+            skill_name: true,
+            proficiency: true,
+            maximum_proficiency: true,
+          },
+        },
+        project: {
+          select: {
+            id: true,
+            project_name: true,
+            description: true,
+            techStack: true,
+            background_img_url: true,
+            project_link: true,
+          },
+        },
+        workExperience: {
+          select: {
+            id: true,
+            company_name: true,
+            profession: true,
+            duration: true,
+            description: true,
+          },
         },
       },
-      skills: {
-        select: {
-          id: true,
-          skill_name: true,
-          proficiency: true,
-          maximum_proficiency: true,
-        },
-      },
-      project: {
-        select: {
-          id: true,
-          project_name: true,
-          description: true,
-          techStack: true,
-          background_img_url: true,
-          project_link: true,
-        },
-      },
-      workExperience: {
-        select: {
-          id: true,
-          company_name: true,
-          profession: true,
-          duration: true,
-          description: true,
-        },
-      },
-    },
-  });
-  if (!user) throw new Error("User not found!");
-  return user;
+    });
+    if (!user) throw new Error("User not found!");
+    return user;
+  } catch (error) {
+    console.log(error)
+    return null;
+  }
 }
 
 export async function updateUserInfo(user: TUser) {
