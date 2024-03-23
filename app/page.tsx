@@ -24,12 +24,12 @@ export default async function Home() {
       linkedin_link: "https://www.linkedin.com/in/prasanna-gramopadhye",
       github_link: "https://github.com/gramo37",
       description: [
-        "Innovative Full Stack Developer | Specialized in React | Skilled in Node.js, PostgreSQL | 1 Year Frontend Experience in React | 1 Year Backend Expertise in Node.js, PostgreSQL",
+        "Innovative Full Stack Developer | 3 Year Web development Experience in React, NodeJs, Postgres, MongoDB and Typescript",
         "Currently working as a Consultant (Full Stack Developer) at Optanium. Here I am a part of the core team developing features for a product named ELSA built primarily using React, Node and typescript.",
         "Previously I worked as an Assistant System Engineer at Tata Consultancy Services Ltd where I was responsible for code analysis and debugging, identify improvement areas and highlight the same to the business.",
       ],
       resume_link:
-        "https://res.cloudinary.com/dwtxio5dn/image/upload/v1704614078/lwkrkyaohcpzunwo0xt5.pdf",
+        "https://res.cloudinary.com/dwtxio5dn/image/upload/v1711174471/mi2soyjdvcnepceqipsi.pdf",
       education: [
         {
           degree_name: "Scaler",
@@ -88,6 +88,11 @@ export default async function Home() {
           proficiency: 50,
           maximum_proficiency: 100,
         },
+        {
+          skill_name: "SQL",
+          proficiency: 50,
+          maximum_proficiency: 100,
+        },
       ],
       project: [
         {
@@ -141,12 +146,11 @@ export default async function Home() {
           duration: "May 2023 - Present",
           description: [
             "Core team member responsible for creating features for a product named Elsa.",
-            "Below are some of the recent achievements in the past 6 months:",
-            " - Created a service for sending weekly dashboard reports",
-            " - Designed an intuitive progress bar",
-            " - Developed a data-driven graph plotting service",
-            " - Introduced a user-friendly image preview feature",
-            "- Currently implementing the push notifications feature using pushy.me",
+            "Below are some of the recent achievements:",
+            " - Integrated a Push Notification service for ELSA using pushy.me",
+            " - Took responsibility for creating Outlook integration for ELSA",
+            " - Created a service for sending weekly dashboard reports using Nivo Library",
+            " - Developed a data-driven graph plotting service using canvas",
             "Key Technologies worked: Express.js · TypeScript · Material-UI · PostgreSQL · Redis · Node.js · JavaScript · React.js",
           ],
         },
@@ -155,11 +159,11 @@ export default async function Home() {
           profession: "Assistant System Engineer",
           duration: "Aug 2021 - Apr 2023",
           description: [
-            "- Responsible for code analysis and debugging, identify improvement areas and highlight the same to the business.",
+            "- Worked as a junior engineer for a client named IndiaFirstLife Insurance on a product named Simplify.",
+            "- Responsible for code analysis, debugging, and identifying areas for improvement.",
+            "- Acquired expertise in HTML, CSS, and JavaScript with guidance from industry experts.",
             "- Closely worked with the client and other application teams to resolve issues, provide Root Cause Analysis, Technical document preparation.",
-            "- Acquired expertise in HTML, CSS, Javascript and React with guidance from industry experts.",
-            "- Developed skills in Data Structures and Algorithms for practical problem-solving.",
-            "Key Technologies worked: HTML, CSS, Javascript, React, SQL, SQL server Management Studio, Gitlab.",
+            "Key technologies worked with: HTML, CSS, JavaScript, React, Node.js, Typescript, SQL, Git.",
           ],
         },
       ],
