@@ -29,7 +29,7 @@ export default async function Home() {
         "Previously I worked as an Assistant System Engineer at Tata Consultancy Services Ltd where I was responsible for code analysis and debugging, identify improvement areas and highlight the same to the business.",
       ],
       resume_link:
-        "https://res.cloudinary.com/dwtxio5dn/image/upload/v1711174471/mi2soyjdvcnepceqipsi.pdf",
+        "https://res.cloudinary.com/dwtxio5dn/image/upload/v1719068288/jkt0tc2uu85zevlba7r5.pdf",
       education: [
         {
           degree_name: "Scaler",
@@ -96,10 +96,10 @@ export default async function Home() {
       ],
       project: [
         {
-          project_name: "Resume Builder",
+          project_name: "Online Chess Platform",
           description: [
-            "A Web app built for students/professionals to create resumes within no time.",
-            "Tech Stack: HTML, CSS, React, Redux",
+            "A real-time online chess platform, containerized using Docker for simplified application deployment.",
+            "Tech Stack: HTML, CSS, React, Node, websockets, turborepo",
           ],
           techStack: [],
           background_img_url:
@@ -118,14 +118,15 @@ export default async function Home() {
           project_link: "https://online-examination-portal.netlify.app",
         },
         {
-          project_name: "Sudoku Solver",
+          project_name: "Resume Builder",
           description: [
-            "A backtracking algorithm which can solve any sudoku within seconds !!",
+            "A Web app built for students/professionals to create resumes within no time.",
+            "Tech Stack: HTML, CSS, React, Redux",
           ],
           techStack: [],
           background_img_url:
-            "https://res.cloudinary.com/dwtxio5dn/image/upload/v1701934936/ykfypjxx74oxdkv5vk0h.png",
-          project_link: "https://sudoku-solver-using-backtracking.netlify.app",
+            "https://res.cloudinary.com/dwtxio5dn/image/upload/v1704610489/irzefialwctfpjguzyt3.png",
+          project_link: "https://resume-builder-3789.netlify.app",
         },
         {
           project_name: "Coin Cap Dashboard",
@@ -137,6 +138,16 @@ export default async function Home() {
           background_img_url:
             "https://res.cloudinary.com/dwtxio5dn/image/upload/v1701936185/kwqcrri6wb9tlnaxib1h.png",
           project_link: "https://h3-mart-project.netlify.app",
+        },
+        {
+          project_name: "Sudoku Solver",
+          description: [
+            "A backtracking algorithm which can solve any sudoku within seconds !!",
+          ],
+          techStack: [],
+          background_img_url:
+            "https://res.cloudinary.com/dwtxio5dn/image/upload/v1701934936/ykfypjxx74oxdkv5vk0h.png",
+          project_link: "https://sudoku-solver-using-backtracking.netlify.app",
         },
       ],
       workExperience: [
