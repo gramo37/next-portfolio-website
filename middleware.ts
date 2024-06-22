@@ -10,22 +10,22 @@ export async function middleware(request: NextRequest) {
   try {
     const cookiesList = cookies();
     const token = cookiesList.get("auth")?.value;
-    if (!token) return NextResponse.redirect(new URL("/login", request.url));
+    if (!token) return NextResponse.redirect(new URL("/me/login", request.url));
     const user = await jwtVerify(token, new TextEncoder().encode(secret_key));
     const { email, password } = user?.payload || {};
     if (
       email !== process.env.LOGIN_MAIL ||
       password !== process.env.LOGIN_PASSWORD
     )
-      return NextResponse.redirect(new URL("/login", request.url));
+      return NextResponse.redirect(new URL("/me/login", request.url));
     return;
   } catch (error) {
     console.log(error);
-    return NextResponse.redirect(new URL("/login", request.url));
+    return NextResponse.redirect(new URL("/me/login", request.url));
   }
 }
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ["/userinfo/:path*", "/update/user/:path*"],
+  matcher: ["/me/userinfo/:path*", "/me/update/user/:path*"],
 };

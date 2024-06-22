@@ -13,14 +13,14 @@ export default function Logout({ className }: TLogoutProps) {
   const {toast} = useToast();
   const logout = () => {
     document.cookie = "auth=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    if(getCookie("auth") === null) {
-      router.push("/login");
-      toast({
-        variant: "success",
-        title: "Success",
-        description: "Logout Successfull",
-      });
-    }
+    router.push("/login");
+    toast({
+      variant: "success",
+      title: "Success",
+      description: "Logout Successfull",
+    });
+    // if(getCookie("auth") === null) {
+    // }
   };
   return (
     <Button className={cn("w-fit", className)} onClick={logout}>
