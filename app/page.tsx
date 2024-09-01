@@ -96,6 +96,17 @@ export default async function Home() {
     ],
     project: [
       {
+        project_name: "Contribution in Cal.com",
+        description: [
+          "Contributed to the open-source project Cal.com by implementing a drawer for mobile view instead of a dialog.",
+          "Cal is an infrastructure for scheduling meetings for everyone.",
+        ],
+        techStack: [],
+        background_img_url:
+          "https://res.cloudinary.com/dwtxio5dn/image/upload/v1721490771/j8vxi2c0ptavv44tbh66.png",
+        project_link: "https://github.com/calcom/cal.com/pull/15632",
+      },
+      {
         project_name: "Online Chess Platform",
         description: [
           "A real-time online chess platform, containerized using Docker for simplified application deployment.",
