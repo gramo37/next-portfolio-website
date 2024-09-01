@@ -4,7 +4,7 @@ const nextConfig = {
   images: {
     domains: ["res.cloudinary.com", "drive.google.com", "github.com"],
   },
-  basePath: '/me',
+  basePath: '',
 };
 
 module.exports = nextConfig;
